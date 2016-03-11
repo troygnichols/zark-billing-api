@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entity_name: MyString
+  client_name: MyString
+  invoice_id: MyString
+  issue_date: 2016-03-09 17:55:45
+  due_date: 2016-03-09 17:55:45
+  subject: MyString
+
+two:
+  entity_name: MyString
+  client_name: MyString
+  invoice_id: MyString
+  issue_date: 2016-03-09 17:55:45
+  due_date: 2016-03-09 17:55:45
+  subject: MyString
