@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160310010203) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "invoices", force: true do |t|
     t.string   "entity_name"
     t.string   "client_name"
