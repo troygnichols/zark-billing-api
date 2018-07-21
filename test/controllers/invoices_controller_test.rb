@@ -32,6 +32,6 @@ class InvoicesControllerTest < ActionController::TestCase
       delete :destroy, params: {id: @invoice}
     end
 
-    assert_redirected_to invoices_path
+    assert_response :no_content
   end
 end
