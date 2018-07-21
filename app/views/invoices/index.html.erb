@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Entity name</th>
+      <th>Entity address</th>
       <th>Client name</th>
       <th>Invoice</th>
       <th>Issue date</th>
@@ -17,6 +18,7 @@
     <% @invoices.each do |invoice| %>
       <tr>
         <td><%= invoice.entity_name %></td>
+        <td><%= invoice.entity_address %></td>
         <td><%= invoice.client_name %></td>
         <td><%= invoice.invoice_id %></td>
         <td><%= invoice.issue_date %></td>
