@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
-  before_filter :allow_cross_site_requests
+  before_action :allow_cross_site_requests
 
   def cors_preflight
     head :no_content

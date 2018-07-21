@@ -5,9 +5,11 @@ one:
   description: MyString
   quantity: 1
   unit_price: 1.5
+  invoice: one
 
 two:
   item_type: MyString
   description: MyString
   quantity: 1
   unit_price: 1.5
+  invoice: two

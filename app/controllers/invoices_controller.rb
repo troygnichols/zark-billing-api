@@ -12,15 +12,6 @@ class InvoicesController < ApplicationController
   def show
   end
 
-  # GET /invoices/new
-  def new
-    @invoice = Invoice.new
-  end
-
-  # GET /invoices/1/edit
-  def edit
-  end
-
   # POST /invoices
   # POST /invoices.json
   def create

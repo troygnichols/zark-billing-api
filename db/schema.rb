@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,31 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180721050922) do
+ActiveRecord::Schema.define(version: 2018_07_21_050922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "invoices", force: :cascade do |t|
-    t.string   "entity_name",    limit: 255
-    t.string   "client_name",    limit: 255
-    t.string   "invoice_id",     limit: 255
-    t.string   "issue_date",     limit: 255
-    t.string   "due_date",       limit: 255
-    t.string   "subject",        limit: 255
-    t.text     "notes"
+  create_table "invoices", id: :serial, force: :cascade do |t|
+    t.string "entity_name", limit: 255
+    t.string "client_name", limit: 255
+    t.string "invoice_id", limit: 255
+    t.string "issue_date", limit: 255
+    t.string "due_date", limit: 255
+    t.string "subject", limit: 255
+    t.text "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "paid_date"
-    t.text     "entity_address"
+    t.string "paid_date"
+    t.text "entity_address"
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string   "item_type",   limit: 255
-    t.string   "description", limit: 255
-    t.float    "quantity"
-    t.float    "unit_price"
-    t.integer  "invoice_id",              null: false
+  create_table "items", id: :serial, force: :cascade do |t|
+    t.string "item_type", limit: 255
+    t.string "description", limit: 255
+    t.float "quantity"
+    t.float "unit_price"
+    t.integer "invoice_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

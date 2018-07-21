@@ -6,44 +6,33 @@ class ItemsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:items)
-  end
-
-  test "should get new" do
-    get :new
+    get :index, as: :json
     assert_response :success
   end
 
   test "should create item" do
     assert_difference('Item.count') do
-      post :create, item: { description: @item.description, item_type: @item.item_type, quantity: @item.quantity, unit_price: @item.unit_price }
+      post :create, as: :json, params: { item: { invoice_id: @item.invoice_id, description: @item.description, item_type: @item.item_type, quantity: @item.quantity, unit_price: @item.unit_price } }
     end
 
-    assert_redirected_to item_path(assigns(:item))
+    assert_response :created
   end
 
   test "should show item" do
-    get :show, id: @item
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @item
+    get :show, as: :json, params: {id: @item}
     assert_response :success
   end
 
   test "should update item" do
-    patch :update, id: @item, item: { description: @item.description, item_type: @item.item_type, quantity: @item.quantity, unit_price: @item.unit_price }
-    assert_redirected_to item_path(assigns(:item))
+    patch :update, as: :json, params: {id: @item, item: { description: @item.description, item_type: @item.item_type, quantity: @item.quantity, unit_price: @item.unit_price }}
+    assert_response :success
   end
 
   test "should destroy item" do
     assert_difference('Item.count', -1) do
-      delete :destroy, id: @item
+      delete :destroy, as: :json, params: {id: @item}
     end
 
-    assert_redirected_to items_path
+    assert_response :no_content
   end
 end

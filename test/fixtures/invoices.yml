@@ -2,6 +2,7 @@
 
 one:
   entity_name: MyString
+  entity_address: 1400 Waterway Ave.
   client_name: MyString
   invoice_id: MyString
   issue_date: 2016-03-09 17:55:45

@@ -6,42 +6,30 @@ class InvoicesControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:invoices)
-  end
-
-  test "should get new" do
-    get :new
+    get :index, as: :json
     assert_response :success
   end
 
   test "should create invoice" do
     assert_difference('Invoice.count') do
-      post :create, invoice: { client_name: @invoice.client_name, due_date: @invoice.due_date, entity_name: @invoice.entity_name, invoice_id: @invoice.invoice_id, issue_date: @invoice.issue_date, subject: @invoice.subject }
+      post :create, as: :json, params: { invoice: { client_name: @invoice.client_name, due_date: @invoice.due_date, entity_name: @invoice.entity_name, invoice_id: @invoice.invoice_id, issue_date: @invoice.issue_date, subject: @invoice.subject } }
     end
-
-    assert_redirected_to invoice_path(assigns(:invoice))
+    assert_response :created
   end
 
   test "should show invoice" do
-    get :show, id: @invoice
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @invoice
+    get :show, as: :json, params: {id: @invoice}
     assert_response :success
   end
 
   test "should update invoice" do
-    patch :update, id: @invoice, invoice: { client_name: @invoice.client_name, due_date: @invoice.due_date, entity_name: @invoice.entity_name, invoice_id: @invoice.invoice_id, issue_date: @invoice.issue_date, subject: @invoice.subject }
-    assert_redirected_to invoice_path(assigns(:invoice))
+    patch :update, as: :json, params: {id: @invoice, invoice: { client_name: @invoice.client_name, due_date: @invoice.due_date, entity_name: @invoice.entity_name, invoice_id: @invoice.invoice_id, issue_date: @invoice.issue_date, subject: @invoice.subject }}
+    assert_response :success
   end
 
   test "should destroy invoice" do
     assert_difference('Invoice.count', -1) do
-      delete :destroy, id: @invoice
+      delete :destroy, params: {id: @invoice}
     end
 
     assert_redirected_to invoices_path

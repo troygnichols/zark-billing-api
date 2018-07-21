@@ -1,4 +1,4 @@
-class Invoice < ActiveRecord::Base
+class Invoice < ApplicationRecord
   has_many :items
 
   accepts_nested_attributes_for :items, allow_destroy: true
