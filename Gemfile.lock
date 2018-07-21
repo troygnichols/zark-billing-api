@@ -81,6 +81,7 @@ GEM
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     pg (0.21.0)
+    puma (3.7.1)
     rack (2.0.5)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
@@ -143,6 +144,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   listen
   pg (~> 0.18)
+  puma
   rails (~> 5.2)
   sdoc (~> 0.4.0)
   spring

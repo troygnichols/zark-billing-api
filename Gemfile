@@ -9,3 +9,4 @@ gem 'spring', group: :development
 gem 'bootsnap', require: false
 gem 'listen'
 gem 'byebug', group: [:development, :test]
+gem 'puma'
