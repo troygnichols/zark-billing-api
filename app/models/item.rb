@@ -1,3 +1,3 @@
 class Item < ApplicationRecord
-  belongs_to :invoice, dependent: :delete
+  belongs_to :invoice
 end
