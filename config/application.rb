@@ -17,5 +17,7 @@ module ZarkBillingApi
     # the framework and any gems in your application.
 
     config.api_only = true
+
+    config.autoload_paths << Rails.root.join('lib')
   end
 end

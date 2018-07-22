@@ -11,3 +11,6 @@ gem 'bootsnap', require: false
 gem 'listen'
 gem 'byebug', group: [:development, :test]
 gem 'puma'
+gem 'bcrypt'
+gem 'jwt'
+gem 'simple_command'
