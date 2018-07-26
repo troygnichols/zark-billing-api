@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
 
-  before_action :set_user, only: [:show, :update]
+  before_action :set_user, only: [:show, :update, :update_password]
 
   def show
   end
