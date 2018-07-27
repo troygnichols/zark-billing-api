@@ -9,6 +9,4 @@ Rails.application.routes.draw do
   match 'update_password', to: 'password#update', via: [:put, :patch]
 
   post 'authenticate', to: 'authentication#authenticate'
-
-  match '(*path)', to: 'application#cors_preflight', via: :options
 end
