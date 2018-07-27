@@ -3,7 +3,11 @@ class PasswordController < ApplicationController
 
 
   def update
-    if @user.update(password_params)
+    if params[:password].blank?
+      errors = ActiveModel::Errors.new(@user)
+      errors.add(:password, 'cannot be blank')
+      render json: errors, status: :unprocessable_entity
+    elsif @user.update(password_params)
       head :ok
     else
       render json: @user.errors, status: :unprocessable_entity
