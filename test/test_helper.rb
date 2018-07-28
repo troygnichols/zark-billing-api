@@ -7,4 +7,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def authorize(email, password)
+    cmd = AuthenticateUser.call(email, password)
+    raise 'Auth failed' unless cmd.success?
+    request.headers['Authorization'] = cmd.result[:token]
+  end
+
 end

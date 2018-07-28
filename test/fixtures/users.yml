@@ -3,9 +3,10 @@
 one:
   name: MyString
   email: MyString
-  password_digest: MyString
+  # password: testpass
+  password_digest: $2a$04$E/rmZWgWt5xNPX6eOn4tseiC7WJe/zmkvuQh6u2Hr2g24uQXv6DhK
 
 two:
   name: MyString
-  email: MyString
+  email: MyString2
   password_digest: MyString
