@@ -8,5 +8,8 @@ Rails.application.routes.draw do
 
   match 'update_password', to: 'password#update', via: [:put, :patch]
 
+  post 'signup', to: 'signup#create'
+  get 'signup/activate', to: 'signup#activate'
+
   post 'authenticate', to: 'authentication#authenticate'
 end

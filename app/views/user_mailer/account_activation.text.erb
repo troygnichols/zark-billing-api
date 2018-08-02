@@ -1,0 +1,7 @@
+Zark Billing - Confirm Signup
+
+Hi, <%= @user.name %>
+
+Welcome to Zark Billing. Please use the link below to confirm your account:
+
+<%= signup_activate_url(email: @user.email, token: @user.activation_token) %>
