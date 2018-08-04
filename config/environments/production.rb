@@ -69,14 +69,16 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default_url_options = { host: 'https://zark-billing.herokuapp.com', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: 'https://zark-billing-api.herokuapp.com', protocol: 'https' }
 
   config.action_mailer.smtp_settings = {
-    address:        'smtp.elasticemail.com',
-    port:           2525,
-    user_name:      ENV['SMTP_USER'],
-    password:       ENV['SMTP_PASSWORD'],
-    authentication: :plain,
+    address:              'smtp.sendgrid.net',
+    port:                 25,
+    user_name:            ENV['SMTP_USER'],
+    password:             ENV['SMTP_PASSWORD'],
+    authentication:       :plain,
+    domain:               'zark-billing-api.herokuapp.com',
+    enable_starttls_auto: true
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
