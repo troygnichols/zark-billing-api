@@ -5,16 +5,15 @@
 
       <p>Hi, <%= @user.name %></p>
 
-      <br/>
-
       <p>
         Welcome to Zark Billing. Please click the link below to confirm your account:
       </p>
 
       <br/>
 
-      <%= link_to 'Activate My Account', signup_activate_url(
-        email: @user.email, token: @user.activation_token), class: 'button is-link has-text-weight-bold' %>
+      <%= email_button_link 'Activate My Account', signup_activate_url(
+        email: @user.email, token: @user.activation_token), style: 'display: inline' %>
+
       <br/>
       <br/>
       <br/>
