@@ -8,6 +8,7 @@ one:
   issue_date: 2016-03-09 17:55:45
   due_date: 2016-03-09 17:55:45
   subject: MyString
+  user: one
 
 two:
   entity_name: MyString
@@ -16,3 +17,4 @@ two:
   issue_date: 2016-03-09 17:55:45
   due_date: 2016-03-09 17:55:45
   subject: MyString
+  user: two

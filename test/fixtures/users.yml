@@ -5,8 +5,10 @@ one:
   email: MyString
   # password: testpass
   password_digest: $2a$04$E/rmZWgWt5xNPX6eOn4tseiC7WJe/zmkvuQh6u2Hr2g24uQXv6DhK
+  active: true
 
 two:
   name: MyString
   email: MyString2
   password_digest: MyString
+  active: false
