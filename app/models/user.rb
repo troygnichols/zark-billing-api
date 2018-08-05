@@ -7,11 +7,18 @@ class User < ApplicationRecord
 
   before_create :create_activation_digest
 
+  has_many :invoices
+
   validates :email, uniqueness: true, presence: true
   validates :password, presence: true,
     length: {within: 6..100}, allow_nil: true
 
   scope :active, ->{ where(active: true) }
+
+  def activation_token_match?(token)
+    return false if token.blank?
+    BCrypt::Password.new(activation_digest).is_password?(token)
+  end
 
   private
 

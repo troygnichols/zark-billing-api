@@ -31,8 +31,12 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
   config.action_mailer.default_url_options = { host: 'http://localhost:4000', protocol: 'http' }
+
+  config.action_mailer.smtp_settings = {
+    address: '127.0.0.1',
+    port: '1025',
+  }
 
   config.action_mailer.perform_caching = false
 
