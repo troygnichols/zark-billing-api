@@ -16,7 +16,7 @@ class SignupController < ApplicationController
   end
 
   def activate
-    user = User.find_by(email: params[:email], active: false)
+    user = User.find_by(email: params[:email])
     if user && user.activation_token_match?(params[:token])
       user.update(active: true, activated_at: Time.zone.now)
       redirect_to login_url
@@ -33,12 +33,7 @@ class SignupController < ApplicationController
   end
 
   def login_url
-    case Rails.env
-    when 'development'
-      'http://localhost:3000/login'
-    else
-      'https://zark-billing.herokuapp.com/login'
-    end
+    "#{Rails.application.config.zark_billing[:base_url]}/login"
   end
 
 end

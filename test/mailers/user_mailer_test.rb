@@ -12,11 +12,13 @@ class UserMailerTest < ActionMailer::TestCase
   end
 
   test "password_reset" do
-    mail = UserMailer.password_reset
+    user = users(:one)
+    token = User.new_token
+    mail = UserMailer.password_reset(user: user, reset_token: token)
     assert_equal "Password reset", mail.subject
-    assert_equal ["to@example.org"], mail.to
+    assert_equal [user.email], mail.to
     assert_equal ["no-reply@zark-billing-api.herokuapp.com"], mail.from
-    assert_match "Hi", mail.body.encoded
+    assert_match "Reset", mail.body.encoded
   end
 
 end

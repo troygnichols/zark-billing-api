@@ -2,7 +2,8 @@ class AuthenticationController < ApplicationController
  skip_before_action :authenticate_request
 
  def authenticate
-   command = AuthenticateUser.call(normalized_email, params[:password])
+   command = AuthenticateUser.call(
+     User.normalize_email(params[:email]), params[:password])
 
    if command.success?
      res = command.result
@@ -16,9 +17,4 @@ class AuthenticationController < ApplicationController
    end
  end
 
- private
-
- def normalized_email
-   params[:email].to_s.strip.downcase
- end
 end

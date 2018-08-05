@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
 
-  attr_accessor :activation_token
+  attr_accessor :activation_token, :reset_token
 
   before_save   :downcase_email
 
@@ -18,8 +18,24 @@ class User < ApplicationRecord
   scope :active, ->{ where(active: true) }
 
   def activation_token_match?(token)
-    return false if token.blank?
+    return false if token.blank? || activation_digest.blank?
     BCrypt::Password.new(activation_digest).is_password?(token)
+  end
+
+  def password_reset_token_match?(token)
+    return false if token.blank? || reset_digest.blank?
+    BCrypt::Password.new(reset_digest).is_password?(token)
+  end
+
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update(
+      reset_digest: User.digest(reset_token),
+      reset_sent_at: Time.zone.now)
+  end
+
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
   end
 
   private
@@ -36,6 +52,10 @@ class User < ApplicationRecord
 
   def User.new_token
     SecureRandom.urlsafe_base64
+  end
+
+  def User.normalize_email(email)
+    email.to_s.strip.downcase
   end
 
   def create_activation_digest
