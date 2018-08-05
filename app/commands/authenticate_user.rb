@@ -10,7 +10,8 @@ class AuthenticateUser
     if u = user
       {
         token: JSONWebToken.encode(user_id: u.id),
-        profile: user
+        profile: user.attributes.slice(
+          'id', 'name', 'email', 'address', 'created_at', 'updated_at')
       }
     else
       nil
@@ -22,7 +23,7 @@ class AuthenticateUser
   attr_accessor :email, :password
 
   def user
-    user = User.find_by(email: email)
+    user = User.find_by(email: email, active: true)
     return user if user && user.authenticate(password)
 
     errors.add :user_authentication, 'invalid credentials'
