@@ -2,7 +2,7 @@ class AuthenticationController < ApplicationController
  skip_before_action :authenticate_request
 
  def authenticate
-   command = AuthenticateUser.call(params[:email], params[:password])
+   command = AuthenticateUser.call(normalized_email, params[:password])
 
    if command.success?
      res = command.result
@@ -14,5 +14,11 @@ class AuthenticationController < ApplicationController
    else
      render json: { error: command.errors }, status: :unauthorized
    end
+ end
+
+ private
+
+ def normalized_email
+   params[:email].to_s.strip.downcase
  end
 end
