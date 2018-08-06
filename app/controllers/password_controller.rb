@@ -23,7 +23,7 @@ class PasswordController < ApplicationController
       return
     end
     if user = User.find_by(email: User.normalize_email(params[:email]))
-      user.create_reset_digest
+      user.create_reset_digest!
       UserMailer.password_reset(
         user: user, reset_token: user.reset_token).deliver_later
     else
