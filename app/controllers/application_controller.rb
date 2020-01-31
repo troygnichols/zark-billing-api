@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  before_action :authenticate_request
+  before_action :authenticate_request, :set_default_response_format
   attr_reader :current_user
 
   private
@@ -9,4 +9,7 @@ class ApplicationController < ActionController::API
     render json: { error: 'Not Authorized' }, status: 401 unless @current_user
   end
 
+  def set_default_response_format
+    request.format = :json
+  end
 end
