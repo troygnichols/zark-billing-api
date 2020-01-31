@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(version: 2018_08_05_164800) do
   enable_extension "plpgsql"
 
   create_table "invoices", id: :serial, force: :cascade do |t|
-    t.string "entity_name", limit: 255
-    t.string "client_name", limit: 255
-    t.string "invoice_id", limit: 255
-    t.string "issue_date", limit: 255
-    t.string "due_date", limit: 255
-    t.string "subject", limit: 255
+    t.string "entity_name"
+    t.string "client_name"
+    t.string "invoice_id"
+    t.string "issue_date"
+    t.string "due_date"
+    t.string "subject"
     t.text "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2018_08_05_164800) do
   end
 
   create_table "items", id: :serial, force: :cascade do |t|
-    t.string "item_type", limit: 255
-    t.string "description", limit: 255
+    t.string "item_type"
+    t.string "description"
     t.float "quantity"
     t.float "unit_price"
     t.integer "invoice_id", null: false
