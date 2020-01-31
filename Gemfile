@@ -15,3 +15,7 @@ gem 'bcrypt'
 gem 'jwt'
 gem 'simple_command'
 gem 'rack-cors', require: 'rack/cors'
+
+group :development do
+  gem 'pry'
+end
